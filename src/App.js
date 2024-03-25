@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoute } from '~/routes';
 import DefaultLayout from '~/components/Layout/DefaultLayout';
+import Video from './components/Layout/components/Content';
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                                 element={
                                     <Layout>
                                         <Page />
+                                        <Video />
                                     </Layout>
                                 }
                             />
