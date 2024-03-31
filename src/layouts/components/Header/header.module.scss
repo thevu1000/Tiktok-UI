@@ -3,12 +3,18 @@
     --search-height: 46px;
     --search-top-spacer: 9px;
     --search-button-width: 52px;
+
     height: var(--default-layout-header-height);
+    z-index: 10;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
     display: flex;
+    background-color: var(--white);
     justify-content: center;
     width: 100%;
     user-select: none;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .inner {

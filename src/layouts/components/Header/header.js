@@ -12,12 +12,14 @@ import {
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 
+import config from '~/config'
 import Button from '~/components/Button';
 import styles from './header.module.scss';
 import images from '~/assets/images';
-import Search from '~/components/Layout/components/Search';
+import Search from '~/layouts/components/Search';
 import Menu from '~/components/Popper/menu';
 import 'tippy.js/dist/tippy.css';
 import { UploadIcon, MessageIcon, InboxIcon } from '~/components/icons';
@@ -30,7 +32,7 @@ const MENU_ITEMS = [
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'Tiếng Việt',
         children: {
-            title: 'Language',
+            title: 'Ngôn Ngữ',
             data: [
                 {
                     code: 'en',
@@ -39,7 +41,7 @@ const MENU_ITEMS = [
                 {
                     code: 'vi',
                     title: 'Tiếng Việt',
-                },
+                }
             ],
         },
     },
@@ -82,7 +84,7 @@ function Header() {
         {
             icon: <FontAwesomeIcon icon={faRightFromBracket} />,
             title: 'Đăng xuất',
-            to: '/feedback',
+            to: '/logout',
             separate: true,
         }
     ];
@@ -90,9 +92,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={config.routes.home} className={cx('logo')}>
                     <img src={images.logo} alt="TikTok" />
-                </div>
+                </Link>
                 
                 <Search />
 
@@ -154,6 +156,7 @@ function Header() {
                             <Image
                                 className={cx('user-avatar')}
                                 alt="Đào Lê Phương Hoa"
+                                
                                 src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/4b85df94ddbc913a995d4d721e417580.jpeg?lk3s=a5d48078&x-expires=1711278000&x-signature=lisuqBOB8v8hGpLWLMb17azT4p0%3D"
                             />
                         ) : (
