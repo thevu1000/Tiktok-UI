@@ -1,0 +1,32 @@
+.wrapper {
+    display: block;
+    padding-bottom: 25px;
+}
+
+.list-header {
+    font-size: 15px;
+    line-height: 22px;
+    margin-top: 0px;
+    color: rgba(22, 24, 35, 0.5);
+    font-family: var(--font-family);
+    font-weight: 700;
+}
+
+.footer-btn {
+    color:rgba(22, 24, 35, 0.5);;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    display: inline-block;
+    margin-right: 6px;
+    margin-top: 5px;
+
+    &:hover {
+    text-decoration: underline;
+
+    }
+}
+
+p {
+    margin-top: 24px;
+}

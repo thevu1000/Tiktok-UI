@@ -15,3 +15,17 @@ export const search = async (keywords, count = '3', cursor = '0') => {
     }
 };
 
+export const followingUser = async (user_id, count,time='0') => {
+    try {
+        const res = await httpRequest.get('userFollowingList', {
+            params: {
+                user_id,
+                count,
+                time,
+            },
+        });
+        return res.data;
+    } catch (error) {
+        console.log(error)
+    }
+}

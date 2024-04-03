@@ -60,7 +60,7 @@ const MENU_ITEMS = [
 
 function Header() {
     
-    const currentUser = true;
+    const currentUser = false;
 
     
 
@@ -148,7 +148,7 @@ function Header() {
                             >
                                 Tải Lên
                             </Button>
-                            <Button primary>Đăng Nhập</Button>
+                            <Button primary to='/'>Đăng Nhập</Button>
                         </>
                     )}
                     <Menu items={currentUser ? UserMenu : MENU_ITEMS}>
