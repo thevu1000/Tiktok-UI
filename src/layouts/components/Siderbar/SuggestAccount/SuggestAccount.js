@@ -7,30 +7,27 @@ import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-function SuggestAccount() {
+function SuggestAccount({userId='6536692104587689986'}) {
     const [results, setResults] = useState([]);
     const [loadMore, setLoadMore] = useState(10)
     const [isLoading, setIsLoading] = useState(false);
 
+
     useEffect(() => {
-        const userId = '6830666089015149569';
         const fetchData = async () => {
             setIsLoading(true);
             
             const results = await searchService.followingUser(userId, loadMore);
-
-            console.log(results);
-            
             setResults(results.followings);
 
             setIsLoading(false);
         };
         fetchData();
-    }, [loadMore]);
+    }, [userId, loadMore]);
 
     const handleLoadMore = () => {
-        setLoadMore( prevLoadMore => prevLoadMore + 5);
-    } 
+        setLoadMore(prevLoadMore => prevLoadMore + 5);
+    }
 
     return (
         <div className={cx('wrapper')}>
@@ -44,11 +41,12 @@ function SuggestAccount() {
                 />
             ))}
             
-                {isLoading ? <div className={cx('loader')}></div> : <Button className={cx('more')} onClick={handleLoadMore}>
-                    More
-                </Button>}
+            {isLoading ? <div className={cx('loader')}></div> : <Button className={cx('more')} onClick={handleLoadMore}>
+                More
+            </Button>}
         </div>
     );
 }
+
 
 export default SuggestAccount;

@@ -11,7 +11,7 @@ function AccountItem({ data, className }) {
     const avatarSrc = data.avatarLarger || data.avatar;
     const userId = data.uniqueId || data.unique_id;
     return (
-        <Link to={`/@${data.nickname}`} className={className ? className : cx('wrapper')}>
+        <Link to={`/@${userId}`} className={className ? className : cx('wrapper')}>
             <img className={cx('avatar')} src={avatarSrc} alt={userId} />
             <div className={cx('info')}>
                 <h4 className={cx('username')}>

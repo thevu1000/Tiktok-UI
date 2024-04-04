@@ -1,0 +1,160 @@
+.recommend-list-item-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px 0px;
+    position: relative;
+    max-width: 692px;
+    height: unset;
+    width: unset;
+    transition-property: margin;
+    transition-duration: 0.3s;
+    margin-bottom: 0px;
+}
+
+.author-avatar {
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 50%;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+}
+
+.content-container {
+    margin-left: 12px;
+    width: 624px;
+    flex: 1 1 624px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.content-info {
+    margin-right: 114px;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+}
+
+.author-contain {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: flex-start;
+}
+
+.author-nickname {
+    font-weight: 400;
+    font-size: 14px;
+    display: inline-block;
+    line-height: 28px;
+}
+
+.author-id {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.video-cap {
+    margin: 0;
+}
+
+.follow-button {
+    position: absolute;
+    top: 16px;
+    right: -24px;
+}
+
+.video-contain {
+    display: flex;
+    & video {
+        width: 317px;
+        border-radius: 8px;
+        margin-right: 20px;
+    }
+
+    & .icon-contain {
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        font-size: 0px;
+        border-radius: 50%;
+        transition: all 200ms ease-in-out 0s;
+        width: 48px;
+        height: 48px;
+        background-color: rgba(22, 24, 35, 0.06);
+        margin-top: 8px;
+        margin-bottom: 6px;
+    }
+
+    & .click-count {
+        height: 10px;
+        min-width: 20px;
+    }
+
+    & .wrapper {
+        position: relative;
+    }
+}
+
+.music-info {
+    font-size: 1.4rem;
+    font-weight: 300;
+    padding: 8px 0;
+    margin: 0;
+}
+
+.action-icon {
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    display: flex;
+}
+
+.action-btn {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.custom-controls {
+    display: flex;
+    align-items: flex-end;
+    padding: 0px 12px;
+    position: absolute;
+    bottom: 26px;
+    width: 94%;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    
+}
+
+.custom-control-btn {
+    left: 12px;
+    bottom: 12px;
+    padding: 10px 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.action-btn.active {
+    color: var(--primary);
+}

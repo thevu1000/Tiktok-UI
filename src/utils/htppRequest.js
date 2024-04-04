@@ -3,7 +3,7 @@ import axios from "axios";
 const httpRequest = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
     headers: {
-        'X-RapidAPI-Key': 'ca6c49e3e0mshbc8b6c3ccc7f3a1p107376jsnfdf6c1d539f4',
+        'X-RapidAPI-Key': '85d45a4031mshef586547de7ab07p193f43jsn612806e8dc6c',
         'X-RapidAPI-Host': 'tiktok-download-video1.p.rapidapi.com'
     }
 });
