@@ -2,11 +2,11 @@ import * as httpRequest from '~/utils/htppRequest';
 
 export const search = async (keywords, count = '3', cursor = '0') => {
     try {
-        const res = await httpRequest.get('searchUser', {
+        const res = await httpRequest.get('user/search', {
             params: {
                 keywords,
-                count, 
-                cursor
+                count,
+                cursor,
             },
         });
         return res.data;
@@ -15,9 +15,9 @@ export const search = async (keywords, count = '3', cursor = '0') => {
     }
 };
 
-export const followingUser = async (user_id, count,time='0') => {
+export const followingUser = async (user_id, count, time = '0') => {
     try {
-        const res = await httpRequest.get('userFollowingList', {
+        const res = await httpRequest.get('user/following', {
             params: {
                 user_id,
                 count,
@@ -26,6 +26,6 @@ export const followingUser = async (user_id, count,time='0') => {
         });
         return res.data;
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};

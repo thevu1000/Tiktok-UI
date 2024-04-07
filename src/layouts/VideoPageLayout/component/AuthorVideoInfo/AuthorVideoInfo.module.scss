@@ -1,0 +1,152 @@
+.content-contain {
+    z-index: 2;
+    width: 100%;
+    background-color: var(--white);
+    padding: 24px 32px;
+}
+
+.author-avatar,
+.avatar {
+    height: 50px;
+    width: 50px;
+    margin-right: 12px;
+    border-radius: 50%;
+
+    & img {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+    }
+}
+
+.content-info {
+    background: rgba(22, 24, 35, 0.03);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.content-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+
+    &:hover .author-name {
+        text-decoration: underline;
+    }
+}
+
+.author-name {
+    font-weight: 700;
+    line-height: 24px;
+    font-size: 1.3rem;
+}
+
+.content-title {
+    font-size: 16px;
+    line-height: 21px;
+    word-break: break-word;
+}
+
+.content-music {
+    line-height: 21px;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 8px;
+
+    & .icon {
+        margin-right: 8px;
+    }
+}
+
+.content-stats {
+    display: flex;
+    padding-top: 16px;
+    color: black;
+
+    & p {
+        margin: 0;
+        margin-left: 4px;
+        margin-right: 16px;
+    }
+}
+
+.btn-action {
+    min-width: 24px;
+    max-height: 32px;
+    display: flex;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(22, 24, 35, 0.06);
+    color: black;
+}
+
+.action-icon {
+    height: 17px;
+    width: 17px;
+}
+
+.content-link {
+    color: rgba(22, 24, 35, 0.75);
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+    box-sizing: border-box;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 38px;
+
+    & .link-input {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        flex: 1 1 auto;
+        padding: 7px 0px 5px 12px;
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+
+    & .copy-btn {
+        border: none;
+        background: none rgba(22, 24, 35, 0.06);
+        outline: none;
+        color: rgb(0, 0, 0);
+        font-weight: 700;
+        flex: 0 0 auto;
+        cursor: pointer;
+        padding: 7px 18px;
+
+        &:hover {
+            background-color: rgba(22, 24, 35, 0.03);
+        }
+    }
+}
+
+.copied-message {
+    color: var(--primary);
+    background-color: white;
+    position: fixed;
+    top: 38%; /* Thay đổi giá trị top tùy theo vị trí mong muốn */
+    left: 58%; /* Thay đổi giá trị left tùy theo vị trí mong muốn */
+    z-index: 3;
+    animation: fadeInOut 2s ease-in-out forwards; /* Sử dụng keyframes chung */
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(0%); /* Đẩy lên trên 10% */
+    }
+    10%,
+    90% {
+        opacity: 1;
+        transform: translateY(0); /* Giữ ở vị trí ban đầu */
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10%); /* Chạy ngược lên 10% */
+    }
+}

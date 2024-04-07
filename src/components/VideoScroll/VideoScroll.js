@@ -3,138 +3,189 @@ import styles from './VideoScroll.module.scss';
 import Image from '../image/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../Button';
+import formatNumber from '../FormatNumber';
 import { faItunesNote } from '@fortawesome/free-brands-svg-icons';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react'; // Added useEffect
+import useElementOnScreen from '~/hooks/useElementOnScreen';
 import {
-    faVolumeUp,
-    faVolumeMute,
-    faPlay,
-    faPause,
-    faBookmark,
-    faComment,
-    faHeart,
-    faShare,
-} from '@fortawesome/free-solid-svg-icons';
+    PlayIcon,
+    PauseIcon,
+    MutedIcon,
+    VolumeIcon,
+    LikeIcon,
+    CommentIcon,
+    ShareIcon,
+    SaveIcon,
+} from '../icons';
+import FormatText from '../FormatText';
 
 const cx = classNames.bind(styles);
 
-function VideoScroll() {
+function VideoScroll({ data, isFollow }) {
     const videoRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [playing, setPlaying] = useState(false);
 
-    const togglePlayPause = () => {
-        if (videoRef.current.paused) {
-            videoRef.current.play();
-            setIsPlaying(true);
+    const [celebrate, setCelebrate] = useState(false);
+
+    const handleLikeClick = () => {
+        if (celebrate) {
+            setCelebrate(false);
+            data.digg_count = data.digg_count - 1;
         } else {
-            videoRef.current.pause();
-            setIsPlaying(false);
+            setCelebrate(true);
+            data.digg_count = data.digg_count + 1;
         }
     };
+
+    const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3,
+    };
+    const isVisibile = useElementOnScreen(options, videoRef);
+    const onVideoClick = () => {
+        if (playing) {
+            videoRef.current.pause();
+            setPlaying(!playing);
+        } else {
+            videoRef.current.play();
+            setPlaying(!playing);
+        }
+    };
+    useEffect(() => {
+        if (isVisibile) {
+            if (!playing) {
+                videoRef.current.play();
+                setPlaying(true);
+            }
+        } else {
+            if (playing) {
+                videoRef.current.pause();
+                setPlaying(false);
+            }
+        }
+    }, [isVisibile]);
 
     const toggleMute = () => {
         videoRef.current.muted = !videoRef.current.muted;
         setIsMuted(videoRef.current.muted);
     };
 
+    const handleLoad = () => {
+        setIsLoaded(true);
+    };
 
     return (
         <div className={cx('recommend-list-item-container')}>
-            <Image src="/" alt="" className={cx('author-avatar')} />
+            <Image
+                src={data.author.avatar}
+                alt=""
+                className={cx('author-avatar')}
+            />
             <div className={cx('content-container')}>
                 <div className={cx('content-info')}>
                     <div className={cx('author-contain')}>
-                        <Button className={cx('author-info')} to={'/a'}>
-                            <h3 className={cx('author-id')}>fujunlala666</h3>
+                        <Button
+                            className={cx('author-info')}
+                            to={`/@${data.author.unique_id}`}
+                        >
+                            <h3 className={cx('author-id')}>
+                                {data.author.nickname}
+                            </h3>
                             <span className={cx('author-nickname')}>
-                                孔融譲Pear🍐
+                                {data.author.unique_id}
                             </span>
                         </Button>
 
                         <div className={cx('video-caption-contain')}>
                             <p className={cx('video-cap')}>
-                                今、とても幸せ #捏造衣装 #チャイナ服
-                                #チャイナドレス #桂乃芬 #崩壊スターレイル
-                                #コスプレ
+                                <FormatText text={data.title} />
                             </p>
                         </div>
 
-                        <Button className={cx('music-info')}>
-                            <FontAwesomeIcon icon={faItunesNote} />
+                        <Button
+                            className={cx('music-info')}
+                            to={`/music/${data.music_info.title}`}
+                        >
+                            <FontAwesomeIcon
+                                className={cx('music-icon')}
+                                icon={faItunesNote}
+                            />
                             <span className={cx('music-name')}>
-                                Chẳng ai biết trước tương lai
+                                {data.music_info.title}
                             </span>
                         </Button>
                     </div>
 
-                    <Button className={cx('follow-button')} outline>
-                        Follow
-                    </Button>
+                    {!isFollow && (
+                        <Button className={cx('follow-button')} outline>
+                            Follow
+                        </Button>
+                    )}
 
                     <div className={cx('video-contain')}>
                         <div className={cx('wrapper')}>
-                            <video ref={videoRef} className={cx('video')} loop>
-                                <source
-                                    src="https://v16m-default.akamaized.net/c9f4db62966c164705b0b178b1598645/660ef2a1/video/tos/alisg/sde/tos-alisg-pv-0037/owBECA1YEFAaHaAgEVGDURQjCfKAnkloOBYfBd/?a=0&bti=OUBzOTg7QGo6OjZAL3AjLTAzYCMxNDNg&ch=0&cr=0&dr=0&lr=all&cd=0%7C0%7C0%7C1&cv=1&br=32398&bt=16199&ds=4&ft=XE5bCqT0m7jPD12rAfW73wU2Y3yKMeF~O5&mime_type=video_mp4&qs=13&rc=M3k0bWw5cm41bzMzODgzNEBpM3k0bWw5cm41bzMzODgzNEBgMC4zMmRjZ2hgLS1kLzFzYSNgMC4zMmRjZ2hgLS1kLzFzcw%3D%3D&l=20240404123402FF8BD1F4316D222815A1&btag=e00048000&dpk=HYux5BefQDsnYshRJU8fjdxVSSf7ai5c1HW4npxwzog2aJWOqWZvC18IeTKlJ0FkGE6X6sCzAhdX1%2F65nc%2BmvEQjZ6vPGJ6%2FQkgyXQ%3D%3D&dpm=aes-256-cfb&l=20240404123402FF8BD1F4316D222815A1"
-                                    type="video/mp4"
-                                />
+                            <video
+                                ref={videoRef}
+                                className={cx('video')}
+                                loop
+                                onLoadedData={handleLoad}
+                            >
+                                <source src={data.wmplay} type="video/mp4" />
                             </video>
 
                             <div className={cx('custom-controls')}>
                                 <button
                                     className={cx('custom-control-btn')}
-                                    onClick={togglePlayPause}
+                                    onClick={onVideoClick}
                                 >
-                                    <FontAwesomeIcon
-                                        icon={isPlaying ? faPause : faPlay}
-                                    />
+                                    {playing ? <PauseIcon /> : <PlayIcon />}
                                 </button>
+
                                 <button
                                     className={cx('custom-control-btn')}
                                     onClick={toggleMute}
                                 >
-                                    <FontAwesomeIcon
-                                        icon={
-                                            isMuted ? faVolumeMute : faVolumeUp
-                                        }
-                                    />
+                                    {isMuted ? <MutedIcon /> : <VolumeIcon />}
                                 </button>
                             </div>
                         </div>
 
                         <div className={cx('action-btn')}>
-                            <div className={cx('icon-contain')}>
-                                <FontAwesomeIcon
-                                    className={cx('action-icon')}
-                                    icon={faHeart}
-                                />
+                            <div
+                                className={cx('icon-contain', {
+                                    celebrate: celebrate,
+                                })}
+                                onClick={handleLikeClick}
+                            >
+                                <LikeIcon className={cx('action-icon')} />
                             </div>
-                            <span className={cx('click-count')}>10000</span>
+                            <span className={cx('click-count')}>
+                                {formatNumber(data.digg_count)}
+                            </span>
 
                             <div className={cx('icon-contain')}>
-                                <FontAwesomeIcon
-                                    className={cx('action-icon')}
-                                    icon={faComment}
-                                />
+                                <CommentIcon className={cx('action-icon')} />
                             </div>
-                            <span className={cx('click-count')}>10000</span>
+                            <span className={cx('click-count')}>
+                                {formatNumber(data.comment_count)}
+                            </span>
 
                             <div className={cx('icon-contain')}>
-                                <FontAwesomeIcon
-                                    className={cx('action-icon')}
-                                    icon={faShare}
-                                />
+                                <SaveIcon className={cx('action-icon')} />
                             </div>
-                            <span className={cx('click-count')}>10000</span>
+                            <span className={cx('click-count')}>
+                                {formatNumber(data.download_count)}
+                            </span>
 
                             <div className={cx('icon-contain')}>
-                                <FontAwesomeIcon
-                                    className={cx('action-icon')}
-                                    icon={faBookmark}
-                                />
+                                <ShareIcon className={cx('action-icon')} />
                             </div>
-                            <span className={cx('click-count')}>10000</span>
+                            <span className={cx('click-count')}>
+                                {formatNumber(data.share_count)}
+                            </span>
                         </div>
                     </div>
                 </div>

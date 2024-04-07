@@ -30,15 +30,15 @@ function Search() {
         }
 
         const fetchApi = async () => {
-            setLoading(true)
-            
-            const result = await searchService.search(debounced)
-            setSearchResult(result.user_list)
+            setLoading(true);
 
-            setLoading(false)
-        }
+            const result = await searchService.search(debounced);
+            setSearchResult(result.user_list);
 
-        fetchApi()
+            setLoading(false);
+        };
+
+        fetchApi();
         // eslint-disable-next-line
     }, [debounced]);
 
@@ -53,17 +53,17 @@ function Search() {
     };
 
     const handleChange = (e) => {
-        const searchValue = e.target.value
+        const searchValue = e.target.value;
         if (searchValue.startsWith(' ')) {
-            return
+            return;
         }
 
-        setSearchValue(searchValue)
-    }
+        setSearchValue(searchValue);
+    };
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-    }
+        e.preventDefault();
+    };
 
     return (
         <div>
@@ -71,7 +71,11 @@ function Search() {
                 interactive
                 visible={showResult && searchResult.length > 0}
                 render={(attrs) => (
-                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                    <div
+                        className={cx('search-result')}
+                        tabIndex="-1"
+                        {...attrs}
+                    >
                         <PopperWrapper>
                             <h4 className={cx('search-label')}>Tài Khoản</h4>
                             {searchResult.map((result, index) => (
@@ -95,21 +99,24 @@ function Search() {
                         onChange={handleChange}
                         onFocus={() => setShowResult(true)}
                     />
-    
+
                     {!!searchValue && !loading && (
                         <button className={cx('clear')} onClick={handleClear}>
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
                     )}
-    
+
                     {loading && (
                         <FontAwesomeIcon
                             className={cx('loading')}
                             icon={faSpinner}
                         />
                     )}
-    
-                    <button className={cx('search-btn')} onMouseDown={handleSubmit}>
+
+                    <button
+                        className={cx('search-btn')}
+                        onMouseDown={handleSubmit}
+                    >
                         <SearchIcon />
                     </button>
                 </div>

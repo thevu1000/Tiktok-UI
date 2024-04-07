@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
 
 const httpRequest = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
     headers: {
         'X-RapidAPI-Key': '85d45a4031mshef586547de7ab07p193f43jsn612806e8dc6c',
-        'X-RapidAPI-Host': 'tiktok-download-video1.p.rapidapi.com'
-    }
+        'X-RapidAPI-Host': 'tiktok-scraper7.p.rapidapi.com',
+    },
 });
 
 export const get = async (path, option) => {

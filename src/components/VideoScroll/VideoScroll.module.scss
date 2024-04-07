@@ -12,6 +12,12 @@
     margin-bottom: 0px;
 }
 
+.author-link {
+    margin: 0;
+    padding: 0;
+    width: 10px;
+}
+
 .author-avatar {
     position: relative;
     display: flex;
@@ -55,14 +61,14 @@
 
 .author-nickname {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1.4rem;
     display: inline-block;
     line-height: 28px;
 }
 
 .author-id {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 1.8rem;
     line-height: 24px;
     display: inline-block;
     margin-right: 4px;
@@ -81,6 +87,7 @@
 .video-contain {
     display: flex;
     & video {
+        height: 100%;
         width: 317px;
         border-radius: 8px;
         margin-right: 20px;
@@ -88,9 +95,7 @@
 
     & .icon-contain {
         display: flex;
-        -webkit-box-pack: center;
         justify-content: center;
-        -webkit-box-align: center;
         align-items: center;
         font-size: 0px;
         border-radius: 50%;
@@ -100,15 +105,38 @@
         background-color: rgba(22, 24, 35, 0.06);
         margin-top: 8px;
         margin-bottom: 6px;
+        animation: keyframes-svg-filled 0.5s ease-in-out forwards;
+
+        &.celebrate {
+            animation: keyframes-svg-filled 0.5s ease-in-out forwards;
+            stroke: var(--primary);
+            fill: var(--primary);
+        }
     }
 
     & .click-count {
         height: 10px;
         min-width: 20px;
+        color: rgba(22, 24, 35, 0.75);
+        font-size: 1.2rem;
+        line-height: 16px;
+        font-weight: 600;
+        text-align: center;
     }
 
     & .wrapper {
         position: relative;
+        max-height: 580px;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        max-height: 563px;
+        min-width: 317px;
+
+        &:hover .custom-controls {
+            display: flex;
+            opacity: 1;
+        }
     }
 }
 
@@ -117,6 +145,14 @@
     font-weight: 300;
     padding: 8px 0;
     margin: 0;
+
+    .music-icon {
+        margin-right: 8px;
+    }
+
+    &:hover span {
+        text-decoration: underline;
+    }
 }
 
 .action-icon {
@@ -132,29 +168,75 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 25px;
+    cursor: pointer;
 }
 
 .custom-controls {
     display: flex;
     align-items: flex-end;
-    padding: 0px 12px;
-    position: absolute;
-    bottom: 26px;
-    width: 94%;
-    -webkit-box-pack: justify;
     justify-content: space-between;
-    
+    height: 40%;
+    background: linear-gradient(
+        rgba(18, 18, 18, 0) 0%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+    width: 94%;
+    position: absolute;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    transition: opacity 0.3s ease 0s;
+    opacity: 0;
 }
 
 .custom-control-btn {
-    left: 12px;
-    bottom: 12px;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
     padding: 10px 0;
     width: 40px;
     height: 40px;
+    margin: 0 12px;
     border-radius: 50%;
+    background-color: transparent;
+    color: var(--white);
 }
 
 .action-btn.active {
     color: var(--primary);
+}
+
+.video-caption-contain {
+    width: 510px;
+}
+
+@keyframes keyframes-svg-filled {
+    0% {
+        transform: scale(0);
+    }
+
+    25% {
+        transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(1);
+        filter: brightness(1.5);
+    }
+}
+
+@keyframes keyframes-svg-celebrate {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 1;
+        filter: brightness(1.5);
+    }
+
+    100% {
+        transform: scale(1); /* Thay đổi từ scale(1.4) thành scale(1) */
+        opacity: 1; /* Giữ lại opacity sau khi hoàn thành animation */
+    }
 }

@@ -10,7 +10,7 @@ function Button({
     href,
     primary = false,
     outline = false,
-    displayText = false, // Thay vì sử dụng prop 'Text'
+    text = false, // Corrected prop name
     rounded = false,
     disabled = false,
     small = false,
@@ -20,11 +20,15 @@ function Button({
     leftIcon,
     rightIcon,
     onClick,
+    onMouseOver,
+    onMouseOut,
     ...passProps
 }) {
     let Comp = 'button';
     const props = {
         onClick,
+        onMouseOver, // Added onMouseOver prop
+        onMouseOut, // Added onMouseOut prop
         ...passProps,
     };
 
@@ -49,7 +53,7 @@ function Button({
         [className]: className,
         primary,
         outline,
-        displayText, // Sử dụng tên prop mới ở đây
+        text, // Corrected prop name
         disabled,
         rounded,
         small,
@@ -70,7 +74,7 @@ Button.propTypes = {
     href: PropTypes.string,
     primary: PropTypes.bool,
     outline: PropTypes.bool,
-    text: PropTypes.bool,
+    text: PropTypes.bool, // Corrected prop type
     rounded: PropTypes.bool,
     disabled: PropTypes.bool,
     small: PropTypes.bool,
@@ -80,6 +84,8 @@ Button.propTypes = {
     leftIcon: PropTypes.node,
     rightIcon: PropTypes.node,
     onClick: PropTypes.func,
+    onMouseOver: PropTypes.func, // Added prop type
+    onMouseOut: PropTypes.func, // Added prop type
 };
 
 export default Button;

@@ -1,0 +1,97 @@
+.video-contain {
+    flex: 1;
+    width: 600px;
+    height: 810px;
+}
+
+.searchbar-contain {
+    position: fixed;
+    display: flex;
+    z-index: 3;
+    width: 50%;
+    padding: 0 16px;
+    justify-content: space-between;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.searchbar-action-btn {
+    height: 40px;
+    width: 40px;
+    background-color: rgba(84, 84, 84, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.action-icon {
+    height: 15px;
+    width: 15px;
+}
+
+.search-input {
+    display: block;
+    inset: 0px;
+    border-radius: 92px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 416px;
+    height: 40px;
+
+    & .input {
+        background-color: transparent;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 21px;
+        border: none;
+        background: transparent;
+        line-height: 40px;
+        margin: 0 10px;
+        outline: none;
+        padding: 0px;
+        width: 100%;
+        color: rgb(255, 255, 255);
+        caret-color: rgb(254, 44, 85);
+        appearance: textfield;
+    }
+}
+
+.video-wrapper {
+    height: 100%;
+    width: 80%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    z-index: 1;
+    left: -24%;
+
+    .img {
+        height: 100%;
+        width: 50%;
+
+        position: relative;
+        left: 40%;
+    }
+}
+
+.video-wrapper img {
+    height: 100%;
+    width: 50%;
+    object-fit: contain;
+    position: relative;
+    left: 0;
+}
+
+.overlay {
+    z-index: 0;
+    width: 200%;
+    height: 100%;
+    filter: blur(10px);
+
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+}

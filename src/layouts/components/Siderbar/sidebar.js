@@ -1,13 +1,20 @@
-import React, { useEffect, useRef} from 'react';
-import classNames from "classnames/bind";
+import React, { useEffect, useRef } from 'react';
+import classNames from 'classnames/bind';
 import styles from './sidebar.module.scss';
-import Menu, { MenuItem } from "./Menu";
-import { HomeIcon, UserGroupIcon, LiveIcon, HomeActiveIcon, LiveActiveIcon, UserGroupActiveIcon } from '~/components/icons';
-import config from "~/config";
-import PerfectScrollbar from "perfect-scrollbar";
+import Menu, { MenuItem } from './Menu';
+import {
+    HomeIcon,
+    UserGroupIcon,
+    LiveIcon,
+    HomeActiveIcon,
+    LiveActiveIcon,
+    UserGroupActiveIcon,
+} from '~/components/icons';
+import config from '~/config';
+import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
-import SuggestAccount from "./SuggestAccount";
-import Footer from "./Footer";
+import SuggestAccount from './SuggestAccount';
+import Footer from './Footer';
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +24,7 @@ function SiderBar() {
     useEffect(() => {
         const sidebar = sidebarRef.current;
         const ps = new PerfectScrollbar(sidebar, {
-            suppressScrollX: true, 
+            suppressScrollX: true,
         });
 
         sidebar.style.overflowY = 'hidden';
@@ -32,21 +39,35 @@ function SiderBar() {
             }, 100);
         });
 
-
         return () => {
-            ps.destroy(); 
+            ps.destroy();
         };
     }, []);
 
     return (
         <aside className={cx('wrapper')} ref={sidebarRef}>
             <Menu>
-                <MenuItem title="For you" to={config.routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
-                <MenuItem title="Following" to={config.routes.following} icon={<UserGroupIcon />} activeIcon={<UserGroupActiveIcon />} />
-                <MenuItem title="Live" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
+                <MenuItem
+                    title="For you"
+                    to={config.routes.home}
+                    icon={<HomeIcon />}
+                    activeIcon={<HomeActiveIcon />}
+                />
+                <MenuItem
+                    title="Following"
+                    to={config.routes.following}
+                    icon={<UserGroupIcon />}
+                    activeIcon={<UserGroupActiveIcon />}
+                />
+                <MenuItem
+                    title="Live"
+                    to={config.routes.live}
+                    icon={<LiveIcon />}
+                    activeIcon={<LiveActiveIcon />}
+                />
             </Menu>
 
-            <SuggestAccount/>
+            <SuggestAccount />
             <Footer />
         </aside>
     );
