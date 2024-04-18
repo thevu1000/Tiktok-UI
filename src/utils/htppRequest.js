@@ -3,8 +3,8 @@ import axios from 'axios';
 const httpRequest = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
     headers: {
-        'X-RapidAPI-Key': '85d45a4031mshef586547de7ab07p193f43jsn612806e8dc6c',
-        'X-RapidAPI-Host': 'tiktok-scraper7.p.rapidapi.com',
+        'X-RapidAPI-Key': '6c30af2e9cmshdc6c2239b426c58p1b952ajsnd7a471086ce6',
+        'X-RapidAPI-Host': 'tiktok-video-no-watermark2.p.rapidapi.com',
     },
 });
 

@@ -1,0 +1,79 @@
+{
+    "next": [
+        {
+            "next": "https://api.spotify.com/v1/search?query=elakhong&type=track&market=UZ&offset=20&limit=10"
+        }
+    ],
+    "result": [
+        {
+            "artist": "Didi Kempot",
+            "name": "Eling",
+            "link": "https://open.spotify.com/track/7n6EPtIjHi3P9h68GEBxYa",
+            "image": "https://i.scdn.co/image/ab67616d0000b273bac8797c78ab67543e68454b",
+            "duration": 290925
+        },
+        {
+            "artist": "Robin Rangeela",
+            "name": "Ek Jhalak Ke Deewana",
+            "link": "https://open.spotify.com/track/47Qnx3xlF6kaIzYeJJFILS",
+            "image": "https://i.scdn.co/image/ab67616d0000b273e324edbb949c05b367ff8ccc",
+            "duration": 231740
+        },
+        {
+            "artist": "Elijah Aike",
+            "name": "Foldin",
+            "link": "https://open.spotify.com/track/1CvevGQDEEfvFS3Xu6r4wn",
+            "image": "https://i.scdn.co/image/ab67616d0000b27340198ac5d7369e46f97dc238",
+            "duration": 109227
+        },
+        {
+            "artist": "Kaluh Man",
+            "name": "Elegang",
+            "link": "https://open.spotify.com/track/5PEQYiueGBle6M0ztwoM8H",
+            "image": "https://i.scdn.co/image/ab67616d0000b27397998678aec55845b67a7505",
+            "duration": 166060
+        },
+        {
+            "artist": "Elijah Oyelade",
+            "name": "Elohim",
+            "link": "https://open.spotify.com/track/60TDMiNWSKIu38uJ9OqA8t",
+            "image": "https://i.scdn.co/image/ab67616d0000b27367ed61ef98f66860824f71a8",
+            "duration": 251150
+        },
+        {
+            "artist": "Chris Delvan Gwamna",
+            "name": "El-Elohe Israel (Live)",
+            "link": "https://open.spotify.com/track/2Tinln8ZnwWAneHFsB4BMe",
+            "image": "https://i.scdn.co/image/ab67616d0000b273c2166ef2ddb547149dc6b063",
+            "duration": 664895
+        },
+        {
+            "artist": "Lee Burridge",
+            "name": "Elongi",
+            "link": "https://open.spotify.com/track/4ktjiVCaUxI16b4rkJauLa",
+            "image": "https://i.scdn.co/image/ab67616d0000b27354064aeef6699dd4e7fc4fd5",
+            "duration": 536470
+        },
+        {
+            "artist": "Joyous Celebration",
+            "name": "Elakho Liphezulu - Live",
+            "link": "https://open.spotify.com/track/6PVwWNyY8zmu1G2uy1a0Yb",
+            "image": "https://i.scdn.co/image/ab67616d0000b2738804f98822cb593a9d832f04",
+            "duration": 306213
+        },
+        {
+            "artist": "Elephant Kind",
+            "name": "Better Days",
+            "link": "https://open.spotify.com/track/0P5b1NOiH7ptjklmz9cdio",
+            "image": "https://i.scdn.co/image/ab67616d0000b273d8f9ffe84d3b83564b37da8f",
+            "duration": 354625
+        },
+        {
+            "artist": "L'or Mbongo-Lemba",
+            "name": "Elonga",
+            "link": "https://open.spotify.com/track/47gsA0SMs4lzisyfCGjnbQ",
+            "image": "https://i.scdn.co/image/ab67616d0000b27346e06d81eb381039336fc77a",
+            "duration": 241000
+        }
+    ]
+}

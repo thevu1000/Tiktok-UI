@@ -36,7 +36,7 @@ function VideoPageLayout() {
             }
 
             setVideoInfo(fetchedVideoData);
-            setIsLoading(false); // Kết thúc quá trình tải dữ liệu
+            setIsLoading(false);
         };
 
         fetchData(currentId);
