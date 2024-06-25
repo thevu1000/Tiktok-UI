@@ -48,6 +48,7 @@ function SiderBar() {
         <aside className={cx('wrapper')} ref={sidebarRef}>
             <Menu>
                 <MenuItem
+                    data-testid='abc'
                     title="For you"
                     to={config.routes.home}
                     icon={<HomeIcon />}
